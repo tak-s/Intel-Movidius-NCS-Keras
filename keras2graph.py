@@ -32,8 +32,8 @@ def tf_to_graph(tf_model_path, model_in, model_out, graph_path):
     for i in tf.get_default_graph().get_operations():
         print(i.name)
 
-    print('mvNCCompile {0}.meta -in {1} -on {2} -o {3}'.format(tf_model_path, model_in, model_out, graph_path))
-    os.system('mvNCCompile {0}.meta -in {1} -on {2} -o {3}'.format(tf_model_path, model_in, model_out, graph_path))
+    print('mvNCCompile {0}.meta -s 12 -in {1} -on {2} -o {3}'.format(tf_model_path, model_in, model_out, graph_path))
+    os.system('mvNCCompile {0}.meta -s 12 -in {1} -on {2} -o {3}'.format(tf_model_path, model_in, model_out, graph_path))
     return True
 
 def keras_to_graph(model_path, model_in, model_out, weights_path, graph_path, take_tf_files = False):
