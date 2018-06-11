@@ -51,7 +51,7 @@ print("========= predict on Movidius =====")
 types = ('*.png', '*.jpg') # the tuple of file types
 files_grabbed = []
 for files in types:
-     files_grabbed.extend(glob.glob(files))
+     files_grabbed.extend(glob.glob(os.path.join(args.img_dir, files)))
 files_grabbed = sorted(files_grabbed)
 
 # start prediction
