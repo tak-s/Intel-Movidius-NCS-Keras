@@ -39,12 +39,12 @@ Use `pred_cpu.py` for prediction on CPU, and use `pred_movidius.py` for predicti
 
 for Intel Movidius:
 
-    python3 pred_movidius.py VGG16_finetune.graph ./img 64
+    python3 pred_movidius.py keras_model/CNN.graph ./img 64
 
 
 for CPU:
 
-    python3 pred_cpu.py model_VGG16finetune.json weights-best_VGG16finetune.h5 ./img 64`
+    python3 pred_cpu.py keras_model/model_CNN_1.json keras_model/weights-best_CNN_1.h5 ./img 64
 
 
 # Important Notes:
