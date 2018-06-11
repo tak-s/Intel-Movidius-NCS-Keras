@@ -1,18 +1,20 @@
 # keras2graph
-Convert Keras model to Intel Movidius NCS graph file.
+Convert Keras model to Intel Movidius NCS graph file, using NCSDK 2.x.
 
 ### Intel Movidius Neural Compute Stick
 #### About Intel Movidius Neural Compute Stick:
-Official Web Page: [developer.movidius.com](https://developer.movidius.com)
+Official Web Page: [developer.movidius.com](https://developer.movidius.com)  
+Intel® Movidius™ Neural Compute SDK(NCSDK 2.x): [github](https://github.com/movidius/ncsdk/tree/ncsdk2)
 
-# Keras Model to NCS Graph:
+## Keras Model to NCS Graph:
 `keras2graph` process turn used TensorFlow backend Keras models to NCS graph.
 Converts Keras model and weights to Intel Movidius technology internal compiled format.
 
-#### But how ?
 Keras Model -> TensorFlow Session -> TensorFlow Meta File -> NCS Graph
 
-# Command usage:
+Important: You need to install NCSDK 2.x.
+
+## Command usage:
     keras2graph.py [-h] [--output_graph OUTPUT_GRAPH] [--take_tf_files]  
                    [--shaves SHAVES]  
                    [--do_profile] [--verbose]  
@@ -20,7 +22,7 @@ Keras Model -> TensorFlow Session -> TensorFlow Meta File -> NCS Graph
 
 This command creates and saves graph file as `<OUTPUT_GRAPH>`, default is ``'./graph'``.
 
-## Arguments:
+### Arguments:
 - `model_path`: Model location. Json file. Data Type: String
 - `model_in`: Name of model's input layer. Data Type: String
 - `model_out`: Name of model's output layer. Data Type: String
@@ -31,10 +33,10 @@ This command creates and saves graph file as `<OUTPUT_GRAPH>`, default is ``'./g
 - `do_profile`: Run mvNCProfile before mvNCCompile. Data Type: Bool
 - `verbose`: Show model details. Data Type: Bool
 
-## Example Run Command:
+### Example Run Command:
     python3 keras2graph.py keras_model/model_CNN_1.json conv2d_1_input activation_5/Softmax keras_model/weights-best_CNN_1.h5 -o keras_model/CNN.graph --shaves=12 --do_profile
 
-# Check result:
+## Check result:
 Use `pred_cpu.py` for prediction on CPU, and use `pred_movidius.py` for prediction on Intel Movidius.
 
 for Intel Movidius:
@@ -47,5 +49,5 @@ for CPU:
     python3 pred_cpu.py keras_model/model_CNN_1.json keras_model/weights-best_CNN_1.h5 ./img 64
 
 
-# Important Notes:
+## Important Notes:
 - Install necessary modules with `sudo pip3 install -r requirements.txt` command.
